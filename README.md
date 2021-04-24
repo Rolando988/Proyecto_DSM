@@ -1,6 +1,9 @@
 Proyecto E-ecommerce
+
 Integrantes:
+
 Rolando Enrique Orellana Portillo OP182020 02T
+
 Eduardo Antonio Santamarina Rivas SR171317 02T
 
 Manual de Usuario
