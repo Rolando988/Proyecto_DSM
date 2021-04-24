@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#ADDDF3"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Registrarse"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="#ADDDF3"
+        android:gravity="center"
+        android:text="Iniciar Sesion"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:elevation="12dp"
+        app:iconTint="@color/white"
+        app:rippleColor="@color/white" />
+</LinearLayout>
