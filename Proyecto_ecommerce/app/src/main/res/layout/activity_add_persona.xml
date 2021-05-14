@@ -3,18 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:gravity="center_horizontal"
-        android:text="Publicar Producto"
-        android:textSize="24sp"
-        android:textColor="#00f"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
     <TextView
         android:gravity="center_horizontal"
@@ -69,6 +58,18 @@
             android:layout_height="wrap_content"
             android:hint="Escriba su ubicacion" />
     </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:text="Subir foto"
+        android:textColor="#FFF"
+        android:id="@+id/btnsubir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imagen"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/btnsubir" />
 
     <Button
         android:text="Guardar"

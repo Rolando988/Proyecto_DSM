@@ -1,18 +1,37 @@
 package sv.edu.udb.proyecto_ecommerce;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import sv.edu.udb.proyecto_ecommerce.datos.Persona;
 
 public class AddPersonaActivity extends AppCompatActivity {
     EditText edtCategoria, edtDescripccion, edtPrecio, edtUbicacion;
+    Button btnsubir;
+    private StorageReference nstorage;
+    private static final int GALERY_INTENT= 1;
+    ImageView SubirImagen;
+    ProgressDialog progressDialog;
     TextView prueba1;
     String key="",categoria="",descripccion="",precio="", ubicacion="",accion="";
     @Override
@@ -22,10 +41,52 @@ public class AddPersonaActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String identificador=user.getEmail();
 
+
+        nstorage= FirebaseStorage.getInstance().getReference();
+
+        btnsubir=findViewById(R.id.btnsubir);
+        SubirImagen=findViewById(R.id.imagen);
+        progressDialog=new ProgressDialog(this);
+
+        btnsubir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, GALERY_INTENT);
+            }
+        });
+
         prueba1=findViewById(R.id.prueba1);
         prueba1.setText(identificador);
         inicializar();
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode== GALERY_INTENT && resultCode== RESULT_OK){
+            progressDialog.setTitle("Subiendo...");
+            progressDialog.setMessage("Subiendo foto a la base de datos");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+
+            Uri uri= data.getData();
+            StorageReference filePath = nstorage.child("fotos").child(uri.getLastPathSegment());
+            filePath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    progressDialog.dismiss();
+                  
+
+
+                    Toast.makeText(AddPersonaActivity.this,"Se a agregado exitosamente", Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }
     }
 
     private void inicializar() {
