@@ -14,7 +14,7 @@ public class Persona {
 
 
 
-    public Persona(String categoria, String descripccion, String precio, String ubicacion) {
+    public Persona(String categoria, String descripccion, String precio, String ubicacion, String usuario) {
         this.categoria = categoria;
         this.descripccion = descripccion;
         this.precio = precio;

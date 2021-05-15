@@ -82,6 +82,7 @@ public class PersonasActivity extends AppCompatActivity {
 
                 intent.putExtra("accion","e"); // Editar
                 intent.putExtra("key", personas.get(i).getKey());
+                intent.putExtra("usuario",personas.get(i).getUsuario());
                 intent.putExtra("categoria",personas.get(i).getCategoria());
                 intent.putExtra("descripccion",personas.get(i).getDescripccion());
                 intent.putExtra("precio",personas.get(i).getPrecio());
@@ -135,6 +136,7 @@ public class PersonasActivity extends AppCompatActivity {
                 Intent i = new Intent(getBaseContext(), AddPersonaActivity.class);
                 i.putExtra("accion","a"); // Agregar
                 i.putExtra("key","");
+                i.putExtra("usuario","");
                 i.putExtra("categoria","");
                 i.putExtra("descripccion","");
                 i.putExtra("precio","");

@@ -26,7 +26,7 @@ import com.google.firebase.storage.UploadTask;
 import sv.edu.udb.proyecto_ecommerce.datos.Persona;
 
 public class AddPersonaActivity extends AppCompatActivity {
-    EditText edtCategoria, edtDescripccion, edtPrecio, edtUbicacion;
+    EditText edtCategoria, edtDescripccion, edtPrecio, edtUbicacion, prueba2;
     Button btnsubir;
     private StorageReference nstorage;
     private static final int GALERY_INTENT= 1;
@@ -57,8 +57,8 @@ public class AddPersonaActivity extends AppCompatActivity {
             }
         });
 
-        prueba1=findViewById(R.id.prueba1);
-        prueba1.setText(identificador);
+        prueba2=findViewById(R.id.prueba2);
+        prueba2.setText(identificador);
         inicializar();
 
     }
@@ -116,7 +116,7 @@ public class AddPersonaActivity extends AppCompatActivity {
         String precio= edtPrecio.getText().toString();
         String ubicacion= edtUbicacion.getText().toString();
         // Se forma objeto persona
-        Persona persona = new Persona(categoria,descripccion,precio,ubicacion);
+        Persona persona = new Persona(categoria,descripccion,precio,ubicacion,prueba2.getText().toString());
 
         if (accion.equals("a")) { //Agregar usando push()
             PersonasActivity.refPersonas.push().setValue(persona);

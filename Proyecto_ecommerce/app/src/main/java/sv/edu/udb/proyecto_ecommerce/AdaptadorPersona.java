@@ -40,16 +40,20 @@ public class AdaptadorPersona extends ArrayAdapter<Persona> {
         if (view == null)
              rowview = layoutInflater.inflate(R.layout.persona_layout,null);
         else rowview = view;
-
+        TextView tvUsuario =rowview.findViewById(R.id.tvUsuario);
         TextView tvCategoria = rowview.findViewById(R.id.tvCategoria);
         TextView tvDescripccion = rowview.findViewById(R.id.tvDescripccion);
         TextView tvPrecio = rowview.findViewById(R.id.tvPrecio);
         TextView tvUbicacion = rowview.findViewById(R.id.tvUbicacion);
+        TextView tvHola = rowview.findViewById(R.id.tvhola);
 
+
+        tvUsuario.setText("Usuario "+personas.get(position).getUsuario());
         tvCategoria.setText("Categoria : "+personas.get(position).getCategoria());
         tvDescripccion.setText("Descripccion : " + personas.get(position).getDescripccion());
         tvPrecio.setText("Precio : " + personas.get(position).getPrecio());
         tvUbicacion.setText("Ubicacion : " + personas.get(position).getUbicacion());
+        tvHola.setText("usuario : " + personas.get(position).getUsuario());
 
         return rowview;
     }
